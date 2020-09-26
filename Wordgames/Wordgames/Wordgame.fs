@@ -39,7 +39,7 @@
             else
                 currLine <- streamReader.ReadLine()
 
-        choosen
+        choosen.Trim()
 
     let private showScrambledChars (input : char array) : unit =
         Console.Write("You have these characters to use from\r\n(You need not use all):\r\n")
@@ -92,9 +92,14 @@
         if userAnswer.ToUpper().Equals("GIVEUP") then
             Console.WriteLine("One valid english word you could have used was '" + correctAnswer + "'.")
             true
-        elif not (isValidAnswer(userAnswer, correctAnswer)) then
+        elif not (isValidAnswer(userAnswer.Trim(), correctAnswer)) then
             Console.ForegroundColor <- ConsoleColor.DarkRed
             Console.WriteLine("You used some additional characters that were not provided!\r\n(Take note of case sensitivity!)\r\n")
+            Console.ForegroundColor <- ConsoleColor.White
+            false
+        elif String.IsNullOrWhiteSpace(userAnswer) then
+            Console.ForegroundColor <- ConsoleColor.DarkRed
+            Console.WriteLine("You just gave an empty input!\r\n")
             Console.ForegroundColor <- ConsoleColor.White
             false
         else
