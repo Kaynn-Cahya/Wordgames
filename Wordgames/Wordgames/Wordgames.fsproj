@@ -6,6 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="Assets\words.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Compile Include="Wordgame.fs" />
+    <Compile Include="MainMenu.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
